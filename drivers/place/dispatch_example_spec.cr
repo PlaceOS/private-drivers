@@ -15,8 +15,8 @@ class DispatchProtocol < BinData
   enum_field UInt8, message : MessageType = MessageType::RECEIVED
   string :ip_address
   uint64 :id_or_port
-  uint32 :data_size, value: ->{ data.size }
-  bytes :data, length: ->{ data_size }, default: Bytes.new(0)
+  uint32 :data_size, value: -> { data.size }
+  bytes :data, length: -> { data_size }, default: Bytes.new(0)
 end
 
 DriverSpecs.mock_driver "Place::DispatchExample" do

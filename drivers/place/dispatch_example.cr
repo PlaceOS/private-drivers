@@ -103,7 +103,7 @@ class Place::DispatchExample < PlaceOS::Driver
   class DispatchProtocol < BinData
     endian big
 
-    enum MessageType
+    enum MessageType : UInt8
       OPENED
       CLOSED
       RECEIVED
@@ -111,10 +111,10 @@ class Place::DispatchExample < PlaceOS::Driver
       CLOSE
     end
 
-    enum_field UInt8, message : MessageType = MessageType::RECEIVED
-    string :ip_address
-    uint64 :id_or_port
-    uint32 :data_size, value: ->{ data.size }
-    bytes :data, length: ->{ data_size }, default: Bytes.new(0)
+    field message : MessageType = MessageType::RECEIVED
+    field ip_address : String
+    field id_or_port : UInt64
+    field data_size : UInt32, value: -> { data.size }
+    field data : Bytes, length: -> { data_size }
   end
 end
