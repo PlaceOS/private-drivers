@@ -56,6 +56,7 @@ class Place::AcidTest < PlaceOS::Driver
   # Calling remote functions
   def echo(message : String)
     result = helper.echo(message).get
+    logger.info { "echoing #{message}" }
     result
   end
 
