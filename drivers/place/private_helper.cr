@@ -5,6 +5,8 @@ class Place::PrivateHelper < PlaceOS::Driver
   descriptive_name "PlaceOS Test Helper"
   generic_name :Helper
 
+  uri_base "http://localhost"
+
   def used_for_place_testing
     logger.debug { "this will be propagated to backoffice!" }
     "you can delete this file"
